@@ -44,9 +44,6 @@ scouting_app/
 |-- models.py
 |-- schema.sql
 |-- utils.py
-|-- docs/
-|   |-- Football_Scouting_App_EER_Diagram.drawio
-|   `-- Football_Scouting_App_EER_Diagram.pdf
 |-- routes/
 |   |-- admin.py
 |   |-- auth.py
@@ -115,15 +112,6 @@ scouting_app/
 | 4 | Not very suitable but has one or more desired qualities. |
 | 4.5 | Might have a desired quality if he changes position. |
 | 5 | Not suitable, no desired qualities, and no prospect of changing position. |
-
-## Database Diagram
-
-The project includes an editable EER database diagram and a PDF preview:
-
-- `docs/Football_Scouting_App_EER_Diagram.drawio`: editable draw.io / diagrams.net file.
-- `docs/Football_Scouting_App_EER_Diagram.pdf`: PDF version for viewing or submission.
-
-The EER diagram shows the main entities, attributes, primary keys, relationships, and cardinalities for users, players, and reports.
 
 ## Database Tables
 
