@@ -87,16 +87,15 @@ scouting_app/
     `-- test_logic.py
 ```
 
-## Positions
+## Dashboard Positions
 
 | Key | Display |
 |---|---|
-| GK | GK |
+| FB | FB Walker |
 | CB | CB |
-| FB | FB (Walker) |
-| FB_CANCELO | FB (Cancelo) |
-| FB_DELPH | FB (Delph) |
+| FB_DELPH | FB Delph |
 | 6ER | 6er |
+| FB_CANCELO | FB Cancelo |
 | 8ER | 8er |
 | WIDE | Wide player |
 | CF | CF |
