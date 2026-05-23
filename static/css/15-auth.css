@@ -1,4 +1,8 @@
 /* Dark sign-in page */
+.signin-page .navbar,
+.create-account-page .navbar {
+    display: none;
+}
 .signin-page {
     --signin-bg: #0f1117;
     --signin-surface: #161b27;

@@ -25,17 +25,6 @@
 <body class="{% block body_class %}{% endblock %}">
     {% if session.get('username') %}
     <nav class="navbar">
-        <div class="nav-brand personal-brand" aria-label="Profile signature">
-            <img class="personal-photo"
-                 src="{{ url_for('static', filename='profile_photo.jpg') }}"
-                 alt="Profile photo">
-            <img class="personal-signature"
-                 src="{{ url_for('static', filename='second_photo.jpg') }}"
-                 alt="Second photo">
-            <img class="personal-extra-photo"
-                 src="{{ url_for('static', filename='third_photo.jpg') }}"
-                 alt="Third photo">
-        </div>
         <div class="nav-info">
             <span class="nav-user">{{ session['username'] }}</span>
             {% if session.get('role') == 'ADMIN' %}
