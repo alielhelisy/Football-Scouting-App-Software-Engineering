@@ -3,12 +3,11 @@ Business logic functions — pure, testable, no Flask/DB imports.
 """
 
 POSITIONS = {
-    "GK":        "GK",
-    "CB":        "CB",
     "FB":        "FB (Walker)",
-    "FB_CANCELO": "FB (Cancelo)",
+    "CB":        "CB",
     "FB_DELPH":  "FB (Delph)",
     "6ER":       "6er",
+    "FB_CANCELO": "FB (Cancelo)",
     "8ER":       "8er",
     "WIDE":      "Wide player",
     "CF":        "CF",
