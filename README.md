@@ -45,6 +45,7 @@ scouting_app/
 |-- schema.sql
 |-- utils.py
 |-- routes/
+|   |-- __init__.py
 |   |-- admin.py
 |   |-- auth.py
 |   |-- players.py
@@ -90,15 +91,15 @@ scouting_app/
 
 | Key | Display |
 |---|---|
-| GK | Goal Keeper |
-| CB | Center Back |
-| FB | Full Back (Walker) |
-| FB | Full Back (Cancelo) |
-| FB | Full Back (Delph) |
-| 6ER | Defensive Midfield |
-| 8ER |  Midfield |
-| Wide Plyaer | Winger |
-| CF | Center Forward |
+| GK | GK |
+| CB | CB |
+| FB | FB (Walker) |
+| FB_CANCELO | FB (Cancelo) |
+| FB_DELPH | FB (Delph) |
+| 6ER | 6er |
+| 8ER | 8er |
+| WIDE | Wide player |
+| CF | CF |
 
 ## Rating Scale
 
@@ -177,8 +178,10 @@ http://127.0.0.1:5000
 ## Run Tests
 
 ```bash
-python -m pytest -q
+python -m pytest
 ```
+
+Current test result: `38 passed`.
 
 ## SQL Server Settings
 
@@ -195,3 +198,4 @@ python -m pytest -q
 - `schema.sql` can be used to recreate the database manually.
 - CSS is loaded from separate files in `static/css/` through `templates/base.html`.
 - Business logic is kept in `models.py` and covered by unit tests.
+- Cache and local editor folders such as `__pycache__/`, `.pytest_cache/`, and `.vscode/` are ignored by Git.
