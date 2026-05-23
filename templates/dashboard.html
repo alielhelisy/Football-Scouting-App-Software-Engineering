@@ -23,59 +23,26 @@
         </svg>
     </div>
 
-    {% macro position_card(key, html_label, kind) %}
+    {% macro position_card(key, name, sub, kind, pos_class) %}
     {% set count = by_pos[key]|length %}
-    <a href="{{ url_for('players_by_position', pos_key=key) }}" class="pos-card" data-type="{{ kind }}">
+    <a href="{{ url_for('players_by_position', pos_key=key) }}" class="pos-card {{ pos_class }}" data-type="{{ kind }}">
         <div class="tooltip">Click to view players</div>
-        <div class="pos-name">{{ html_label|safe }}</div>
+        <div class="pos-name">{{ name }}</div>
+        {% if sub %}<div class="pos-sub">{{ sub }}</div>{% endif %}
         <div class="pos-count"><span>{{ count }}</span> player{% if count != 1 %}s{% endif %}</div>
     </a>
     {% endmacro %}
 
     <div class="formation">
-        <div class="pos-row">
-            {{ position_card('GK', 'GK', 'gk') }}
-        </div>
-
-        <div class="pos-row">
-            {{ position_card('CB', 'CB', 'def') }}
-        </div>
-
-        <div class="pos-row">
-            {{ position_card('FB', 'FB <span>(Walker)</span>', 'def') }}
-            {{ position_card('FB_CANCELO', 'FB <span>(Cancelo)</span>', 'def') }}
-            {{ position_card('FB_DELPH', 'FB <span>(Delph)</span>', 'def') }}
-        </div>
-
-        <div class="pos-row">
-            {{ position_card('6ER', '6er', 'mid') }}
-            {{ position_card('8ER', '8er', 'mid') }}
-            {{ position_card('WIDE', 'Wide Player', 'mid') }}
-        </div>
-
-        <div class="pos-row">
-            {{ position_card('CF', 'CF', 'fwd') }}
-        </div>
+        {{ position_card('FB', 'FB', 'Walker', 'def', 'pos-fb-walker') }}
+        {{ position_card('CB', 'CB', '', 'def', 'pos-cb') }}
+        {{ position_card('FB_DELPH', 'FB', 'Delph', 'def', 'pos-fb-delph') }}
+        {{ position_card('6ER', '6er', '', 'mid', 'pos-6er') }}
+        {{ position_card('FB_CANCELO', 'FB', 'Cancelo', 'def', 'pos-fb-cancelo') }}
+        {{ position_card('8ER', '8er', '', 'mid', 'pos-8er') }}
+        {{ position_card('WIDE', 'Wide Player', '', 'mid', 'pos-wide') }}
+        {{ position_card('CF', 'CF', '', 'fwd', 'pos-cf') }}
     </div>
 </div>
 
-<div class="pitch-legend">
-    <div class="legend-item"><div class="legend-dot legend-gk"></div>Goalkeeper</div>
-    <div class="legend-item"><div class="legend-dot legend-def"></div>Defender</div>
-    <div class="legend-item"><div class="legend-dot legend-mid"></div>Midfielder</div>
-    <div class="legend-item"><div class="legend-dot legend-fwd"></div>Forward</div>
-</div>
-
-<script>
-    document.querySelectorAll('.pos-card').forEach(card => {
-        card.addEventListener('click', () => {
-            card.style.transition = 'transform 0.08s ease';
-            card.style.transform = 'scale(0.96)';
-            setTimeout(() => {
-                card.style.transform = '';
-                setTimeout(() => { card.style.transition = ''; }, 200);
-            }, 100);
-        });
-    });
-</script>
 {% endblock %}
