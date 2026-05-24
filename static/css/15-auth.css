@@ -787,6 +787,87 @@
     font-family: 'Barlow', 'Segoe UI', sans-serif;
 }
 
+
+.change-password-page .navbar {
+    background: #0f1117;
+    border-bottom: 1px solid #1e2230;
+    min-height: 56px;
+    padding: 0 28px;
+    box-shadow: none;
+}
+
+.change-password-page .nav-info {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.change-password-page .nav-user {
+    font-weight: 700;
+    font-size: 15px;
+    color: #d79536;
+    letter-spacing: 0.02em;
+}
+
+.change-password-page .nav-role,
+.change-password-page .nav-role.admin-badge {
+    background: #d65a44;
+    color: #fff;
+    font-size: 10px;
+    font-weight: 700;
+    padding: 3px 8px;
+    border-radius: 4px;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+}
+
+.change-password-page .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.change-password-page .nav-links a:not(.btn) {
+    color: #9ca3af;
+    font-size: 13.5px;
+    font-weight: 500;
+    padding: 6px 12px;
+    border-radius: 6px;
+    text-decoration: none;
+}
+
+.change-password-page .nav-links a:not(.btn):hover {
+    color: #fff;
+    background: rgba(255,255,255,0.06);
+}
+
+.change-password-page .nav-links .btn,
+.change-password-page .nav-links button {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 7px 14px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    letter-spacing: 0.02em;
+    transition: all 0.18s ease;
+    text-decoration: none;
+    line-height: 1.2;
+    white-space: nowrap;
+}
+
+.change-password-page .btn-report { background: #d79536; color: #fff; }
+.change-password-page .btn-search { background: #3184cf; color: #fff; }
+.change-password-page .btn-primary { background: #28a865; color: #fff; }
+.change-password-page .btn-delete-account { background: #d65a44; color: #fff; }
+.change-password-page .btn-logout { background: #374151; color: #e5e7eb; }
+.change-password-page .nav-links .btn:hover,
+.change-password-page .nav-links button:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+
 .change-password-page .container {
     max-width: none;
     min-height: calc(100vh - 56px);
