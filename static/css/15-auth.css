@@ -768,3 +768,82 @@
         grid-template-columns: 1fr;
     }
 }
+
+
+/* Dark change password page */
+.change-password-page {
+    --create-account-bg: #0f1117;
+    --create-account-surface: #161b27;
+    --create-account-surface2: #1c2232;
+    --create-account-border: #232a3a;
+    --create-account-accent: #28a865;
+    --create-account-blue: #3184cf;
+    --create-account-text: #e5e7eb;
+    --create-account-muted: #6b7280;
+    --create-account-dim: #9ca3af;
+    --create-account-input-bg: #1c2232;
+    --create-account-input-border: #2a3245;
+    background: var(--create-account-bg);
+    font-family: 'Barlow', 'Segoe UI', sans-serif;
+}
+
+.change-password-page .container {
+    max-width: none;
+    min-height: calc(100vh - 56px);
+    margin: 0;
+    padding: 32px 16px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    background: radial-gradient(ellipse at 50% 30%, #1a2a1c 0%, #0f1117 65%);
+}
+
+.change-password-page .alert {
+    width: 100%;
+    max-width: 420px;
+    margin: 0;
+}
+
+.change-password-card {
+    background: var(--create-account-surface);
+    border: 1px solid var(--create-account-border);
+    border-radius: 20px;
+    width: 100%;
+    max-width: 420px;
+    overflow: hidden;
+    box-shadow:
+        0 0 0 1px rgba(255,255,255,0.04),
+        0 32px 80px rgba(0,0,0,0.6),
+        0 0 60px rgba(45,106,53,0.12);
+}
+
+.change-password-page .card-header { padding: 26px 32px 22px; background: linear-gradient(135deg, rgba(45,106,53,0.22) 0%, rgba(45,106,53,0.06) 60%, transparent 100%); border-bottom: 1px solid var(--create-account-border); position: relative; }
+.change-password-page .card-header::before { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: linear-gradient(90deg, var(--create-account-accent), var(--create-account-blue)); border-radius: 20px 20px 0 0; }
+.change-password-page .card-logo { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; }
+.change-password-page .card-logo-icon { width: 32px; height: 32px; border-radius: 9px; background: var(--create-account-accent); display: flex; align-items: center; justify-content: center; opacity: 0.9; }
+.change-password-page .card-logo-text { font-family: 'Barlow Condensed', sans-serif; font-size: 12px; font-weight: 800; color: var(--create-account-muted); letter-spacing: 0.15em; text-transform: uppercase; white-space: nowrap; }
+.change-password-page .card-title { font-family: 'Barlow Condensed', sans-serif; font-size: 30px; font-weight: 800; color: var(--create-account-text); letter-spacing: 0.06em; text-transform: uppercase; line-height: 1; }
+.change-password-page .card-body { padding: 24px 32px; display: flex; flex-direction: column; gap: 14px; }
+.change-password-page .field { display: flex; flex-direction: column; gap: 6px; }
+.change-password-page .field-label { font-size: 10.5px; font-weight: 700; color: var(--create-account-muted); text-transform: uppercase; letter-spacing: 0.1em; white-space: nowrap; }
+.change-password-page .input-wrap { position: relative; }
+.change-password-page input[type="password"],
+.change-password-page input[type="text"] { font-family: 'Barlow', sans-serif; font-size: 14px; font-weight: 500; color: var(--create-account-text); background: var(--create-account-input-bg); border: 1px solid var(--create-account-input-border); border-radius: 9px; padding: 10px 42px 10px 14px; width: 100%; outline: none; transition: border-color 0.18s, box-shadow 0.18s; }
+.change-password-page input:focus { border-color: var(--create-account-blue); box-shadow: 0 0 0 3px rgba(49,132,207,0.18); }
+.change-password-page input::placeholder { color: #374151; }
+.change-password-page .toggle-pw { position: absolute; right: 12px; top: 50%; transform: translateY(-50%); background: none; border: none; cursor: pointer; color: var(--create-account-muted); display: flex; align-items: center; transition: color 0.15s; padding: 4px; }
+.change-password-page .toggle-pw:hover { color: var(--create-account-text); }
+.change-password-page .divider { height: 1px; background: var(--create-account-border); margin: 4px 0; }
+.change-password-page .card-footer { padding: 0 32px 26px; display: flex; align-items: center; justify-content: space-between; }
+.change-password-page .link-back { font-size: 13px; font-weight: 600; color: var(--create-account-blue); background: none; border: none; transition: color 0.15s; text-decoration: none; white-space: nowrap; }
+.change-password-page .link-back:hover { color: #5fa3df; text-decoration: underline; }
+.change-password-page .footer-btns { display: flex; align-items: center; gap: 8px; }
+.change-password-page .btn-cancel,
+.change-password-page .btn-create-account { font-family: 'Barlow', sans-serif; font-size: 13.5px; border-radius: 9px; cursor: pointer; transition: all 0.18s ease; white-space: nowrap; text-decoration: none; }
+.change-password-page .btn-cancel { font-weight: 600; padding: 10px 20px; border: 1px solid var(--create-account-border); background: transparent; color: var(--create-account-dim); }
+.change-password-page .btn-cancel:hover { background: var(--create-account-surface2); color: var(--create-account-text); border-color: #3a4460; }
+.change-password-page .btn-create-account { font-weight: 700; padding: 10px 22px; border: none; background: var(--create-account-blue); color: #fff; letter-spacing: 0.03em; }
+.change-password-page .btn-create-account:hover { filter: brightness(1.12); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(49,132,207,0.4); }
+.change-password-page .btn-create-account:active { transform: translateY(0); }

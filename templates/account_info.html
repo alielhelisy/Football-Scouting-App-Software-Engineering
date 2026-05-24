@@ -19,6 +19,7 @@
                 {{ 'Administrator' if user.role == 'ADMIN' else 'Scout' }}
             </div>
         </div>
+        <a class="profile-action" href="{{ url_for('change_password') }}">Change Password</a>
     </section>
 
     <section class="info-grid">

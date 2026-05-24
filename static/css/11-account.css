@@ -168,6 +168,29 @@
     flex: 1;
 }
 
+.profile-action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 16px;
+    border-radius: 10px;
+    border: 1px solid var(--account-border);
+    background: var(--account-blue);
+    color: #fff;
+    font-size: 13px;
+    font-weight: 700;
+    text-decoration: none;
+    white-space: nowrap;
+    transition: filter 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.profile-action:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+    box-shadow: 0 8px 18px rgba(49,132,207,0.25);
+}
+
+
 .profile-name {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 28px;

@@ -73,6 +73,41 @@ def logout():
     session.clear()
     return redirect(url_for("login"))
 
+@app.route("/account/change-password", methods=["GET", "POST"])
+@login_required
+def change_password():
+    if request.method == "POST":
+        current_password = request.form.get("current_password", "")
+        new_password = request.form.get("new_password", "")
+        confirm_password = request.form.get("confirm_password", "")
+
+        if not current_password or not new_password or not confirm_password:
+            flash("All password fields are required.", "error")
+            return render_template("change_password.html")
+        if new_password != confirm_password:
+            flash("New passwords do not match.", "error")
+            return render_template("change_password.html")
+        if len(new_password) < 6:
+            flash("New password must be at least 6 characters.", "error")
+            return render_template("change_password.html")
+
+        db = get_db()
+        user = db.execute("SELECT password_hash FROM users WHERE id = ?", (session["user_id"],)).fetchone()
+        if not user or user["password_hash"] != hash_password(current_password):
+            flash("Current password is incorrect.", "error")
+            return render_template("change_password.html")
+
+        db.execute(
+            "UPDATE users SET password_hash = ? WHERE id = ?",
+            (hash_password(new_password), session["user_id"])
+        )
+        db.commit()
+        flash("Password changed successfully.", "success")
+        return redirect(url_for("account_info"))
+
+    return render_template("change_password.html")
+
+
 
 @app.route("/account")
 @login_required
