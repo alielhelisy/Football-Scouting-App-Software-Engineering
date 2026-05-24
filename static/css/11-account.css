@@ -105,6 +105,25 @@
     padding: 40px 24px;
 }
 
+.account-page-body .alert {
+    width: 100%;
+    max-width: 920px;
+    margin: 0 auto 18px;
+    padding: 14px 18px;
+    background: rgba(40,168,101,0.12);
+    border: 1px solid rgba(40,168,101,0.3);
+    border-radius: 10px;
+    color: #77d5a2;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.account-page-body .alert-error {
+    background: rgba(214,90,68,0.12);
+    border-color: rgba(214,90,68,0.35);
+    color: #f3b1a8;
+}
+
 .account-shell {
     width: 100%;
 }
