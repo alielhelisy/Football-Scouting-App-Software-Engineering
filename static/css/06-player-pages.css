@@ -595,6 +595,11 @@
     border-bottom: 0;
 }
 
+.player-profile-page .profile-report-table td:first-child,
+.player-profile-page .profile-report-table th:first-child {
+    white-space: nowrap;
+}
+
 .player-profile-page .profile-delete-report {
     width: 28px;
     height: 28px;
