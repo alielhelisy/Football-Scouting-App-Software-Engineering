@@ -451,3 +451,87 @@
     background: var(--account-border);
     color: var(--account-text);
 }
+
+/* Security / change-password card */
+.account-page-body .security-card {
+    background: var(--account-surface);
+    border: 1px solid var(--account-border);
+    border-radius: 16px;
+    padding: 24px 32px;
+    margin-bottom: 20px;
+}
+
+.account-page-body .security-head {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px;
+}
+
+.account-page-body .security-head-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.account-page-body .security-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 9px;
+    background: var(--account-surface2);
+    border: 1px solid var(--account-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--account-blue);
+    flex-shrink: 0;
+}
+
+.account-page-body .security-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 20px;
+    font-weight: 800;
+    color: var(--account-text);
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+}
+
+.account-page-body .security-sub {
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--account-muted);
+    margin-top: 2px;
+}
+
+.account-page-body .btn-change-pw {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 9px 18px;
+    border-radius: 7px;
+    cursor: pointer;
+    background: var(--account-blue);
+    color: #fff;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+    letter-spacing: 0.02em;
+    transition: all 0.18s ease;
+    flex-shrink: 0;
+}
+
+.account-page-body .btn-change-pw:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+
+@media (max-width: 560px) {
+    .account-page-body .security-head {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .account-page-body .btn-change-pw {
+        width: 100%;
+        text-align: center;
+    }
+}

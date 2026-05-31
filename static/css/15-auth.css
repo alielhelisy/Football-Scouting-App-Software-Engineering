@@ -990,3 +990,193 @@
 .signin-page .alert {
     max-width: 420px;
 }
+
+/* ── Change password page (v2 layout) ── */
+.change-password-page .container {
+    max-width: 560px;
+    min-height: auto;
+    margin: 0 auto;
+    padding: 40px 24px;
+    display: block;
+    background: none;
+    gap: 0;
+}
+
+.change-password-page .back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--create-account-muted);
+    font-size: 13px;
+    font-weight: 600;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    margin-bottom: 20px;
+    transition: color 0.18s ease;
+}
+
+.change-password-page .back-link:hover {
+    color: var(--create-account-text);
+}
+
+.change-password-page .page-head {
+    margin-bottom: 24px;
+}
+
+.change-password-page .page-title {
+    font-family: 'Barlow Condensed', sans-serif;
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--create-account-text);
+    letter-spacing: 0.03em;
+    line-height: 1.1;
+}
+
+.change-password-page .page-sub {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--create-account-muted);
+    margin-top: 4px;
+}
+
+.change-password-page .security-card {
+    background: var(--create-account-surface);
+    border: 1px solid var(--create-account-border);
+    border-radius: 16px;
+    padding: 28px 32px;
+    position: relative;
+    overflow: hidden;
+}
+
+.change-password-page .security-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 3px;
+    background: linear-gradient(90deg, #d79536, var(--create-account-blue));
+}
+
+.change-password-page .pw-field {
+    margin-bottom: 18px;
+}
+
+.change-password-page .pw-label {
+    display: block;
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--create-account-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.12em;
+    margin-bottom: 7px;
+}
+
+.change-password-page .pw-input-wrap {
+    position: relative;
+}
+
+.change-password-page .pw-input {
+    width: 100%;
+    font-family: 'Barlow', sans-serif;
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--create-account-text);
+    background: var(--create-account-bg);
+    border: 1px solid var(--create-account-border);
+    border-radius: 9px;
+    padding: 11px 44px 11px 14px;
+    transition: border-color 0.18s ease;
+}
+
+.change-password-page .pw-input::placeholder {
+    color: var(--create-account-muted);
+}
+
+.change-password-page .pw-input:focus {
+    outline: none;
+    border-color: var(--create-account-blue);
+}
+
+.change-password-page .pw-input.error {
+    border-color: #d65a44;
+}
+
+.change-password-page .pw-eye {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--create-account-muted);
+    padding: 4px;
+    display: flex;
+    align-items: center;
+    transition: color 0.18s ease;
+}
+
+.change-password-page .pw-eye:hover {
+    color: var(--create-account-dim);
+}
+
+.change-password-page .pw-hint {
+    font-size: 11.5px;
+    font-weight: 500;
+    color: var(--create-account-muted);
+    margin-top: 6px;
+}
+
+.change-password-page .pw-hint.error {
+    color: #e1735f;
+}
+
+.change-password-page .pw-actions {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin-top: 24px;
+    padding-top: 24px;
+    border-top: 1px solid var(--create-account-border);
+}
+
+.change-password-page .btn-save-pw {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 11px 22px;
+    border-radius: 7px;
+    border: none;
+    cursor: pointer;
+    background: var(--create-account-blue);
+    color: #fff;
+    letter-spacing: 0.02em;
+    transition: all 0.18s ease;
+}
+
+.change-password-page .btn-save-pw:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
+}
+
+.change-password-page .btn-cancel-pw {
+    font-family: 'Barlow', sans-serif;
+    font-size: 12.5px;
+    font-weight: 600;
+    padding: 11px 22px;
+    border-radius: 7px;
+    cursor: pointer;
+    background: none;
+    color: var(--create-account-muted);
+    border: 1px solid var(--create-account-border);
+    letter-spacing: 0.02em;
+    transition: all 0.18s ease;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.change-password-page .btn-cancel-pw:hover {
+    color: var(--create-account-text);
+    border-color: var(--create-account-muted);
+}
