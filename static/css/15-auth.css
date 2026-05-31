@@ -928,3 +928,65 @@
 .change-password-page .btn-create-account { font-weight: 700; padding: 10px 22px; border: none; background: var(--create-account-blue); color: #fff; letter-spacing: 0.03em; }
 .change-password-page .btn-create-account:hover { filter: brightness(1.12); transform: translateY(-1px); box-shadow: 0 4px 14px rgba(49,132,207,0.4); }
 .change-password-page .btn-create-account:active { transform: translateY(0); }
+
+/* Shared dark flash messages */
+.dashboard-page .alert,
+.add-player-page .alert,
+.create-report-page .alert,
+.search-page .alert,
+.edit-comment-page .alert,
+.player-profile-page .alert,
+.position-players-page .alert,
+.accounts-page .alert,
+.account-page-body .alert,
+.create-account-page .alert,
+.change-password-page .alert {
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto 18px;
+    padding: 14px 18px;
+    background: rgba(40,168,101,0.12);
+    border: 1px solid rgba(40,168,101,0.3);
+    border-radius: 10px;
+    color: #77d5a2;
+    font-size: 14px;
+    font-weight: 600;
+    box-shadow: none;
+}
+
+.dashboard-page .alert-error,
+.add-player-page .alert-error,
+.create-report-page .alert-error,
+.search-page .alert-error,
+.edit-comment-page .alert-error,
+.player-profile-page .alert-error,
+.position-players-page .alert-error,
+.accounts-page .alert-error,
+.account-page-body .alert-error,
+.create-account-page .alert-error,
+.change-password-page .alert-error {
+    background: rgba(214,90,68,0.12);
+    border-color: rgba(214,90,68,0.35);
+    color: #f3b1a8;
+}
+
+.add-player-page .container,
+.create-report-page .container,
+.search-page .container,
+.edit-comment-page .container,
+.create-account-page .container,
+.change-password-page .container {
+    flex-direction: column;
+    align-items: center;
+}
+
+.add-player-page .container,
+.search-page .container {
+    justify-content: flex-start;
+}
+
+.create-account-page .alert,
+.change-password-page .alert,
+.signin-page .alert {
+    max-width: 420px;
+}
