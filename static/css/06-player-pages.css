@@ -288,9 +288,29 @@
     margin: 0;
     padding: 36px 24px;
     display: flex;
-    align-items: flex-start;
-    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     background: radial-gradient(ellipse at 50% 0%, #1a1f2e 0%, #0f1117 65%);
+}
+
+.player-profile-page .alert {
+    width: 100%;
+    max-width: 820px;
+    margin: 0 auto 18px;
+    padding: 14px 18px;
+    background: rgba(40,168,101,0.12);
+    border: 1px solid rgba(40,168,101,0.3);
+    border-radius: 10px;
+    color: #77d5a2;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.player-profile-page .alert-error {
+    background: rgba(214,90,68,0.12);
+    border-color: rgba(214,90,68,0.35);
+    color: #f3b1a8;
 }
 
 .player-profile-page .profile-page-wrap {
