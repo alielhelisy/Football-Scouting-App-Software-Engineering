@@ -88,6 +88,11 @@
         </div>
         {% else %}
         <div class="tab-content active">
+            <div class="stat-card">
+                <div class="stat-label">Total Players</div>
+                <div class="stat-value">{{ total_players }}</div>
+            </div>
+
             <div class="reports-card">
                 <div class="reports-title">Players</div>
                 {% if players %}
