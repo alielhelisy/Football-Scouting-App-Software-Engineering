@@ -118,7 +118,6 @@
                         <div>{{ (player.foot or '-')|upper }}</div>
                         <div class="player-report-count" aria-label="{{ player.report_count }} reports">
                             <strong>{{ player.report_count }}</strong>
-                            <span>{{ 'report' if player.report_count == 1 else 'reports' }}</span>
                         </div>
                     </a>
                     {% endfor %}
