@@ -7,6 +7,125 @@ from models import (
     POSITIONS, CARD_OPTIONS, RATING_OPTIONS, RATING_DESCRIPTIONS,
 )
 
+def _display_rating(value):
+    rating = float(value)
+    return int(rating) if rating == int(rating) else rating
+
+
+def _rating_class(value):
+    rating = float(value)
+    if rating <= 2:
+        return "rating-high"
+    if rating <= 3.5:
+        return "rating-mid"
+    return "rating-low"
+
+
+def _position_class(position):
+    if position in ("6ER", "8ER"):
+        return "mid"
+    if position in ("WIDE", "CF"):
+        return "att"
+    if position == "GK":
+        return "gk"
+    return "def"
+
+
+@app.route("/reports")
+@login_required
+def reports_list():
+    query = (request.args.get("q") or "").strip()
+    selected_position = (request.args.get("position") or "").strip().upper()
+    selected_rating = (request.args.get("rating") or "").strip()
+    sort = request.args.get("sort", "recent")
+
+    rating_value = None
+    if selected_rating:
+        try:
+            rating_value = validate_stars(selected_rating)
+        except ValueError:
+            selected_rating = ""
+
+    where = []
+    params = []
+    if not is_admin():
+        where.append("p.user_id = ?")
+        params.append(session["user_id"])
+
+    if query:
+        like = f"%{query.lower()}%"
+        where.append(
+            "(LOWER(p.name) LIKE ? OR LOWER(COALESCE(p.team, '')) LIKE ? "
+            "OR LOWER(u.username) LIKE ? OR LOWER(COALESCE(r.comments, '')) LIKE ?)"
+        )
+        params.extend([like, like, like, like])
+
+    if selected_position in POSITIONS:
+        where.append("r.rated_position = ?")
+        params.append(selected_position)
+    else:
+        selected_position = ""
+
+    if rating_value is not None:
+        where.append("r.rating = ?")
+        params.append(rating_value)
+
+    allowed_sorts = {"recent", "oldest", "rating-best", "rating-worst"}
+    if sort not in allowed_sorts:
+        sort = "recent"
+    order_by = {
+        "recent": "r.created_at DESC, r.id DESC",
+        "oldest": "r.created_at ASC, r.id ASC",
+        "rating-best": "r.rating ASC, r.created_at DESC",
+        "rating-worst": "r.rating DESC, r.created_at DESC",
+    }[sort]
+
+    sql = (
+        "SELECT r.id, r.player_id, r.rating, r.minutes_played, r.goals_scored, "
+        "r.received_cards, r.rated_position, r.comments, r.created_at, "
+        "p.name AS player_name, p.team AS club, u.username AS scout_name "
+        "FROM reports r "
+        "JOIN players p ON p.id = r.player_id "
+        "JOIN users u ON u.id = p.user_id "
+    )
+    if where:
+        sql += "WHERE " + " AND ".join(where) + " "
+    sql += "ORDER BY " + order_by
+
+    rows = get_db().execute(sql, tuple(params)).fetchall()
+    reports = []
+    for row in rows:
+        position = row["rated_position"]
+        reports.append({
+            "id": row["id"],
+            "player_id": row["player_id"],
+            "player_name": row["player_name"],
+            "club": row["club"] or "-",
+            "scout_name": row["scout_name"],
+            "rating": _display_rating(row["rating"]),
+            "rating_class": _rating_class(row["rating"]),
+            "minutes_played": row["minutes_played"],
+            "goals_scored": row["goals_scored"],
+            "received_cards": row["received_cards"] or "None",
+            "card_class": (row["received_cards"] or "None").lower(),
+            "position": position,
+            "position_display": POSITIONS.get(position, position),
+            "position_class": _position_class(position),
+            "comments": row["comments"] or "-",
+            "date": (row["created_at"] or "")[:10],
+        })
+
+    return render_template(
+        "reports_list.html",
+        reports=reports,
+        positions=POSITIONS,
+        rating_options=RATING_OPTIONS,
+        query=query,
+        selected_position=selected_position,
+        selected_rating=selected_rating,
+        sort=sort,
+        admin=is_admin(),
+    )
 
 @app.route("/reports/create", methods=["GET", "POST"])
 @login_required

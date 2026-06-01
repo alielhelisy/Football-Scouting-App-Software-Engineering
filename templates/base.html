@@ -20,6 +20,7 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='css/13-search.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/14-admin-accounts.css') }}">
     <link rel="stylesheet" href="{{ url_for('static', filename='css/15-auth.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/16-reports-list.css') }}">
     {% block extra_css %}{% endblock %}
 </head>
 <body class="{% block body_class %}{% endblock %}">
@@ -36,6 +37,7 @@
         <div class="nav-links">
             <a href="{{ url_for('dashboard') }}">Home</a>
             <a href="{{ url_for('account_info') }}">Account</a>
+            <a href="{{ url_for('reports_list') }}">Reports</a>
             <a href="{{ url_for('create_report') }}" class="btn btn-report">Create Report</a>
             <a href="{{ url_for('search') }}" class="btn btn-search">Search</a>
             {% if session.get('role') == 'ADMIN' %}<a href="{{ url_for('admin_accounts') }}" class="btn btn-primary">Accounts</a>{% endif %}
