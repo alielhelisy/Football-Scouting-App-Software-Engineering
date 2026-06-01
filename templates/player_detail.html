@@ -155,11 +155,23 @@
                             <td>{{ positions.get(r.rated_position, r.rated_position) }}</td>
                             <td>{{ r.comments or '—' }}</td>
                             <td>
-                                <form method="POST"
-                                      action="{{ url_for('delete_report', player_id=player.id, report_id=r.id) }}"
-                                      onsubmit="return confirm('Delete this report?')">
-                                    <button type="submit" class="profile-delete-report">×</button>
-                                </form>
+                                <div class="profile-report-actions">
+                                    <a href="{{ url_for('edit_report', player_id=player.id, report_id=r.id) }}"
+                                       class="profile-edit-report"
+                                       title="Edit report"
+                                       aria-label="Edit report">
+                                        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                                             stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                                            <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path>
+                                            <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path>
+                                        </svg>
+                                    </a>
+                                    <form method="POST"
+                                          action="{{ url_for('delete_report', player_id=player.id, report_id=r.id) }}"
+                                          onsubmit="return confirm('Delete this report?')">
+                                        <button type="submit" class="profile-delete-report" title="Delete report" aria-label="Delete report">×</button>
+                                    </form>
+                                </div>
                             </td>
                         </tr>
                         {% endfor %}
@@ -182,3 +194,4 @@
     </section>
 </div>
 {% endblock %}
+

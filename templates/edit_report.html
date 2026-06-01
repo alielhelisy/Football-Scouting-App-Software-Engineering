@@ -1,0 +1,82 @@
+{% extends "base.html" %}
+{% block title %}Edit Report - Scouting App{% endblock %}
+{% block body_class %}create-report-page{% endblock %}
+
+{% block content %}
+<form method="POST" class="form-card create-report-card">
+    <div class="form-header">
+        <div class="form-title">
+            <div class="form-title-icon">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                    <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                    <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                </svg>
+            </div>
+            Edit Report
+        </div>
+    </div>
+
+    <div class="form-body">
+        <div class="field">
+            <label class="field-label">Player</label>
+            <input type="text" value="{{ player.name }} ({{ positions.get(player.position, player.position) }})" readonly>
+        </div>
+
+        <div class="field-row">
+            <div class="field">
+                <label class="field-label" for="rating">Rating</label>
+                <select id="rating" name="rating" required>
+                    {% for rating in rating_options %}
+                    <option value="{{ rating }}" {% if report.rating == rating %}selected{% endif %}>{{ rating }}{% if rating_descriptions.get(rating) %} - {{ rating_descriptions.get(rating) }}{% endif %}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="field">
+                <label class="field-label" for="minutes_played">Minutes</label>
+                <input type="number" id="minutes_played" name="minutes_played" value="{{ report.minutes_played }}" min="0" max="120">
+            </div>
+
+            <div class="field">
+                <label class="field-label" for="goals_scored">Goals</label>
+                <input type="number" id="goals_scored" name="goals_scored" value="{{ report.goals_scored }}" min="0">
+            </div>
+
+            <div class="field">
+                <label class="field-label" for="received_cards">Cards</label>
+                <select id="received_cards" name="received_cards">
+                    {% for card in card_options %}
+                    <option value="{{ card }}" {% if report.received_cards == card %}selected{% endif %}>{{ card }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="field-label" for="rated_position">Rated Position</label>
+            <select id="rated_position" name="rated_position" required>
+                {% for key, display in positions.items() %}
+                <option value="{{ key }}" {% if report.rated_position == key %}selected{% endif %}>{{ display }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="field">
+            <label class="field-label" for="comments">Player Profile Comments</label>
+            <textarea id="comments" name="comments">{{ report.comments or '' }}</textarea>
+        </div>
+    </div>
+
+    <div class="form-footer">
+        <a href="{{ url_for('player_detail', player_id=player.id) }}" class="btn-cancel">Cancel</a>
+        <button type="submit" class="btn-save">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M19 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11l5 5v11a2 2 0 0 1-2 2z"/>
+                <polyline points="17 21 17 13 7 13 7 21"/>
+                <polyline points="7 3 7 8 15 8"/>
+            </svg>
+            Save Changes
+        </button>
+    </div>
+</form>
+{% endblock %}

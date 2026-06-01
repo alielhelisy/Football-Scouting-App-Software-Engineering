@@ -184,6 +184,63 @@ def create_report():
                            rating_descriptions=RATING_DESCRIPTIONS)
 
 
+
+@app.route("/players/<int:player_id>/reports/<int:report_id>/edit", methods=["GET", "POST"])
+@login_required
+def edit_report(player_id, report_id):
+    player = get_player_or_404(player_id)
+    if not player:
+        flash("Player not found.", "error")
+        return redirect(url_for("dashboard"))
+
+    db = get_db()
+    report = db.execute(
+        "SELECT * FROM reports WHERE id = ? AND player_id = ?",
+        (report_id, player_id)
+    ).fetchone()
+    if not report:
+        flash("Report not found.", "error")
+        return redirect(url_for("player_detail", player_id=player_id))
+
+    if request.method == "POST":
+        try:
+            rating = validate_stars(request.form.get("rating"))
+            minutes = validate_non_negative_int(request.form.get("minutes_played", 0), "Minutes Played")
+            goals = validate_non_negative_int(request.form.get("goals_scored", 0), "Goals Scored")
+            cards = validate_cards(request.form.get("received_cards", "None"))
+            rated_pos = validate_position(request.form.get("rated_position", ""))
+        except ValueError as e:
+            flash(str(e), "error")
+            return render_template(
+                "edit_report.html",
+                player=player,
+                report=report,
+                positions=POSITIONS,
+                card_options=CARD_OPTIONS,
+                rating_options=RATING_OPTIONS,
+                rating_descriptions=RATING_DESCRIPTIONS,
+            )
+
+        comments = request.form.get("comments", "").strip()
+        db.execute(
+            "UPDATE reports SET rating = ?, minutes_played = ?, goals_scored = ?, "
+            "received_cards = ?, rated_position = ?, comments = ? "
+            "WHERE id = ? AND player_id = ?",
+            (rating, minutes, goals, cards, rated_pos, comments, report_id, player_id)
+        )
+        db.commit()
+        flash("Report updated.", "success")
+        return redirect(url_for("player_detail", player_id=player_id))
+
+    return render_template(
+        "edit_report.html",
+        player=player,
+        report=report,
+        positions=POSITIONS,
+        card_options=CARD_OPTIONS,
+        rating_options=RATING_OPTIONS,
+        rating_descriptions=RATING_DESCRIPTIONS,
+    )
 @app.route("/players/<int:player_id>/edit_comment", methods=["GET", "POST"])
 @login_required
 def edit_comment(player_id):
@@ -211,3 +268,4 @@ def edit_comment(player_id):
 
     return render_template("edit_comment.html", player=player, latest=latest,
                            pos_display=POSITIONS.get(player["position"], player["position"]))
+

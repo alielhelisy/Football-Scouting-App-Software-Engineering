@@ -600,16 +600,44 @@
     white-space: nowrap;
 }
 
+.player-profile-page .profile-report-actions {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.player-profile-page .profile-edit-report,
 .player-profile-page .profile-delete-report {
-    width: 28px;
-    height: 28px;
+    width: 42px;
+    height: 42px;
     border: 0;
-    border-radius: 7px;
-    background: var(--profile-red);
+    border-radius: 10px;
     color: #fff;
     cursor: pointer;
-    font-size: 18px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
     line-height: 1;
+    box-shadow: 0 8px 18px rgba(0, 0, 0, 0.18);
+    transition: filter 0.18s ease, transform 0.18s ease, box-shadow 0.18s ease;
+}
+
+.player-profile-page .profile-edit-report {
+    background: var(--profile-blue);
+    text-decoration: none;
+}
+
+.player-profile-page .profile-delete-report {
+    background: var(--profile-red);
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.player-profile-page .profile-edit-report:hover,
+.player-profile-page .profile-delete-report:hover {
+    filter: brightness(1.12);
+    transform: translateY(-1px);
 }
 
 @media (max-width: 760px) {
@@ -950,3 +978,4 @@
         flex-direction: column;
     }
 }
+
