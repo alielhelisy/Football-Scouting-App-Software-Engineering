@@ -7,19 +7,21 @@ Software Engineering final project built with Flask and Microsoft SQL Server.
 
 ## Overview
 
-Football Scouting App is a multi-user web application for football scouts. Scouts can create player profiles, organize players by tactical position, write scouting reports, search players, and review report history. Admin users can manage accounts and view data across scouts.
+Football Scouting App is a multi-user web application for managing football players and reports. Users can create player profiles, organize players by tactical position, write and edit reports, search for players, and review player history. Admin users can manage accounts and view data across users.
 
 ## Main Features
 
-- Register, login, logout, and account deletion.
+- User registration, login, logout, and account deletion.
 - Login accepts username or email.
-- Scout accounts can manage their own players and reports.
+- Account page with account information and change password option.
+- User accounts can manage their own players and reports.
 - Admin accounts can add users, delete users, and change user roles.
 - The main protected admin account is the username `admin`.
-- Tactical dashboard grouped by the project positions.
-- Player CRUD: add, edit, delete, profile view.
-- Report creation with the project rating scale.
-- Search by position, name, and club.
+- Tactical dashboard grouped by project positions.
+- Player CRUD: add, edit, delete, and profile view.
+- Report workflow: create, edit, delete, list, and view report history.
+- Reports page with search, position filter, rating filter, and sorting.
+- Search by player position, name, and club.
 - Dark themed pages with separated CSS files.
 - Unit tests for business logic.
 
@@ -57,6 +59,7 @@ scouting_app/
 |   |-- register.html
 |   |-- dashboard.html
 |   |-- account_info.html
+|   |-- change_password.html
 |   |-- admin_accounts.html
 |   |-- admin_add_account.html
 |   |-- add_player.html
@@ -64,7 +67,9 @@ scouting_app/
 |   |-- player_detail.html
 |   |-- players_by_position.html
 |   |-- create_report.html
+|   |-- edit_report.html
 |   |-- edit_comment.html
+|   |-- reports_list.html
 |   `-- search.html
 |-- static/
 |   `-- css/
@@ -82,7 +87,8 @@ scouting_app/
 |       |-- 12-reports.css
 |       |-- 13-search.css
 |       |-- 14-admin-accounts.css
-|       `-- 15-auth.css
+|       |-- 15-auth.css
+|       `-- 16-reports-list.css
 `-- tests/
     `-- test_logic.py
 ```
@@ -93,8 +99,8 @@ scouting_app/
 |---|---|
 | CB | CB |
 | FB | FB (Walker) |
-| FB | FB (Cancelo) |
-| FB | FB (Delph) |
+| FB_CANCELO | FB (Cancelo) |
+| FB_DELPH | FB (Delph) |
 | 6ER | 6er |
 | 8ER | 8er |
 | WIDE | Wide player |
