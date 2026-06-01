@@ -249,9 +249,10 @@
     display: flex;
     flex-direction: column;
     gap: 12px;
+    margin: 0;
 }
 
-.reports-list-page .report-card {
+.reports-list-page .reports-list-card {
     background: var(--reports-surface);
     border: 1px solid var(--reports-border);
     border-radius: 14px;
@@ -262,17 +263,19 @@
     align-items: center;
     transition: border-color 0.18s, transform 0.18s, box-shadow 0.18s;
     cursor: pointer;
+    width: 100%;
+    margin: 0;
     text-decoration: none;
     color: inherit;
 }
 
-.reports-list-page .report-card:hover {
+.reports-list-page .reports-list-card:hover {
     border-color: #3a4460;
     transform: translateY(-2px);
     box-shadow: 0 10px 28px rgba(0,0,0,0.35);
 }
 
-.reports-list-page .rating-badge {
+.reports-list-page .reports-rating-badge {
     width: 56px;
     height: 56px;
     border-radius: 12px;
@@ -284,7 +287,7 @@
     flex-shrink: 0;
 }
 
-.reports-list-page .rating-badge .num {
+.reports-list-page .reports-rating-num {
     font-size: 26px;
     font-weight: 800;
 }
@@ -293,9 +296,9 @@
 .reports-list-page .rating-mid { background: rgba(215,149,54,0.15); border: 1px solid rgba(215,149,54,0.4); color: #e8b263; }
 .reports-list-page .rating-low { background: rgba(214,90,68,0.15); border: 1px solid rgba(214,90,68,0.4); color: #e1735f; }
 
-.reports-list-page .report-info { min-width: 0; }
+.reports-list-page .reports-card-info { min-width: 0; }
 
-.reports-list-page .report-player-row {
+.reports-list-page .reports-player-row {
     display: flex;
     align-items: center;
     gap: 9px;
@@ -303,7 +306,7 @@
     margin-bottom: 7px;
 }
 
-.reports-list-page .report-player {
+.reports-list-page .reports-player-name {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 20px;
     font-weight: 800;
@@ -311,7 +314,7 @@
     letter-spacing: 0.03em;
 }
 
-.reports-list-page .pos-tag {
+.reports-list-page .reports-pos-tag {
     font-size: 10px;
     font-weight: 800;
     padding: 3px 8px;
@@ -321,12 +324,12 @@
     white-space: nowrap;
 }
 
-.reports-list-page .pos-tag.def { background: rgba(49,132,207,0.18); color: #7cb5e8; border: 1px solid rgba(49,132,207,0.35); }
-.reports-list-page .pos-tag.mid { background: rgba(40,168,101,0.15); color: #77d5a2; border: 1px solid rgba(40,168,101,0.3); }
-.reports-list-page .pos-tag.att { background: rgba(215,149,54,0.15); color: #e8b263; border: 1px solid rgba(215,149,54,0.3); }
-.reports-list-page .pos-tag.gk { background: rgba(107,114,128,0.28); color: var(--reports-dim); border: 1px solid var(--reports-border); }
+.reports-list-page .reports-pos-tag.def { background: rgba(49,132,207,0.18); color: #7cb5e8; border: 1px solid rgba(49,132,207,0.35); }
+.reports-list-page .reports-pos-tag.mid { background: rgba(40,168,101,0.15); color: #77d5a2; border: 1px solid rgba(40,168,101,0.3); }
+.reports-list-page .reports-pos-tag.att { background: rgba(215,149,54,0.15); color: #e8b263; border: 1px solid rgba(215,149,54,0.3); }
+.reports-list-page .reports-pos-tag.gk { background: rgba(107,114,128,0.28); color: var(--reports-dim); border: 1px solid var(--reports-border); }
 
-.reports-list-page .report-comment {
+.reports-list-page .reports-comment {
     font-size: 13.5px;
     font-weight: 500;
     color: var(--reports-dim);
@@ -338,14 +341,14 @@
     -webkit-box-orient: vertical;
 }
 
-.reports-list-page .report-meta {
+.reports-list-page .reports-meta {
     display: flex;
     align-items: center;
     gap: 14px;
     flex-wrap: wrap;
 }
 
-.reports-list-page .meta-item {
+.reports-list-page .reports-meta-item {
     display: flex;
     align-items: center;
     gap: 5px;
@@ -354,17 +357,17 @@
     color: var(--reports-muted);
 }
 
-.reports-list-page .meta-item svg,
-.reports-list-page .meta-item strong { color: var(--reports-dim); }
+.reports-list-page .reports-meta-item svg,
+.reports-list-page .reports-meta-item strong { color: var(--reports-dim); }
 
-.reports-list-page .meta-dot {
+.reports-list-page .reports-meta-dot {
     width: 3px;
     height: 3px;
     border-radius: 50%;
     background: var(--reports-border);
 }
 
-.reports-list-page .report-stats {
+.reports-list-page .reports-stats {
     display: flex;
     gap: 18px;
     align-items: center;
@@ -373,12 +376,12 @@
     flex-shrink: 0;
 }
 
-.reports-list-page .stat-block {
+.reports-list-page .reports-stat {
     text-align: center;
     min-width: 42px;
 }
 
-.reports-list-page .stat-num {
+.reports-list-page .reports-stat-num {
     font-family: 'Barlow Condensed', sans-serif;
     font-size: 22px;
     font-weight: 800;
@@ -386,9 +389,9 @@
     line-height: 1;
 }
 
-.reports-list-page .stat-num.goal { color: var(--reports-accent); }
+.reports-list-page .reports-stat-num.goal { color: var(--reports-accent); }
 
-.reports-list-page .stat-tag {
+.reports-list-page .reports-stat-tag {
     font-size: 9px;
     font-weight: 700;
     color: var(--reports-muted);
@@ -397,7 +400,7 @@
     margin-top: 4px;
 }
 
-.reports-list-page .card-pill {
+.reports-list-page .reports-card-pill {
     width: 13px;
     height: 17px;
     border-radius: 2px;
@@ -406,9 +409,9 @@
     background: var(--reports-border);
 }
 
-.reports-list-page .card-pill.yellow { background: #d7b036; }
-.reports-list-page .card-pill.red { background: var(--reports-red); }
-.reports-list-page .card-pill.none { background: var(--reports-border); }
+.reports-list-page .reports-card-pill.yellow { background: #d7b036; }
+.reports-list-page .reports-card-pill.red { background: var(--reports-red); }
+.reports-list-page .reports-card-pill.none { background: var(--reports-border); }
 
 .reports-list-page .reports-empty-state {
     text-align: center;
@@ -452,9 +455,9 @@
     .reports-list-page .nav-links { flex-wrap: wrap; }
     .reports-list-page .container { padding: 24px 14px; }
 
-.reports-list-page .report-card { grid-template-columns: 48px 1fr; }
+.reports-list-page .reports-list-card { grid-template-columns: 48px 1fr; }
 
-.reports-list-page .report-stats {
+.reports-list-page .reports-stats {
         grid-column: 1 / -1;
         padding-left: 0;
         border-left: none;
@@ -463,3 +466,6 @@
         justify-content: flex-start;
     }
 }
+
+
+
