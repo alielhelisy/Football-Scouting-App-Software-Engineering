@@ -38,7 +38,6 @@
             <a href="{{ url_for('dashboard') }}">Home</a>
             <a href="{{ url_for('account_info') }}">Account</a>
             <a href="{{ url_for('reports_list') }}">Reports</a>
-            <a href="{{ url_for('create_report') }}" class="btn btn-report">Create Report</a>
             <a href="{{ url_for('search') }}" class="btn btn-search">Search</a>
             {% if session.get('role') == 'ADMIN' %}<a href="{{ url_for('admin_accounts') }}" class="btn btn-primary">Accounts</a>{% endif %}
             <form method="POST" action="{{ url_for('delete_account') }}" style="display:inline"
@@ -60,3 +59,4 @@
     </main>
 </body>
 </html>
+
